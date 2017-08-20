@@ -23,15 +23,15 @@
 ;;
 ;; Usage:
 ;;   1. Click the Sidewise toolbar icon, and perform an export to a file.
-;;   2. Call pw/readfile2hash with the file as argument, i e:
-;;      (pw/readfile2hash "/tmp/sidewise_export.json")
+;;   2. Call pw/sidewise2org with the file as argument, i e:
+;;      (pw/sidewise2org "/tmp/sidewise_export.json")
 ;;   3. The result is shown in a temporary buffer, that you may
 ;;      save to disk.
 
 (require 'json)
 
 
-(defun pw/readfile2hash (file)
+(defun pw/sidewise2org (file)
   (let* ((json-object-type 'hash-table)
          (json-array-type 'list)
          (json-key-type 'string)
@@ -40,11 +40,11 @@
          (target-buffer-name "*sidewise.org*"))
     (with-output-to-temp-buffer target-buffer-name
       (switch-to-buffer target-buffer-name)
-      (pw/readfile2hash-rec pagetree 0)
+      (pw/sidewise2org-rec pagetree 0)
       (org-mode))))
 
 
-(defun pw/readfile2hash-rec (pagetree sublevel)
+(defun pw/sidewise2org-rec (pagetree sublevel)
   (mapc (lambda (x)
           (if (and (gethash "title" x) (gethash "url" x))
               (progn
@@ -54,7 +54,7 @@
                 (org-insert-link nil (gethash "url" x) (gethash "title" x))))
                 (princ "\n")
           (if (gethash "children" x)
-              (pw/readfile2hash-rec (gethash "children" x) (+ sublevel 1)))
+              (pw/sidewise2org-rec (gethash "children" x) (+ sublevel 1)))
           ) pagetree))
 
 
