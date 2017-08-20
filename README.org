@@ -1,0 +1,38 @@
+#+TITLE:     sidewise2org
+#+AUTHOR:    Per Weijnitz
+#+EMAIL:     per.weijnitz@gmail.com
+#+DATE:      2017-08-20
+#+DESCRIPTION: 
+#+KEYWORDS: 
+#+LANGUAGE:  en
+#+OPTIONS:   H:3 num:t toc:nil \n:nil @:t ::t |:t ^:t -:t f:t *:t <:t
+#+OPTIONS:   TeX:t LaTeX:nil skip:nil d:nil todo:nil pri:nil tags:not-in-toc
+#+EXPORT_EXCLUDE_TAGS: exclude
+#+STARTUP:   showall
+#+MENU:      Buffers
+
+
+
+* Changes
+ - 2017-08-20: Version 0.1 - initial version
+
+
+ | Status:   | Works                                   |
+ | Location: | [[https://github.com/perweij/sidewise2org]] |
+
+* Description
+Users of the Sidewise Chrome plugin (http://www.sidewise.info/) may
+want to import the current Sidewise link state into an org-file. This
+is a small program to perform this operation.
+
+* Install
+Save =sidewise2org.el= in one of your =load-path= directories.
+
+I have only tested this with GNU Emacs version 25.
+
+* Usage
+ 1. Click the Sidewise toolbar icon, and perform an export to a file.
+ 2. Call pw/readfile2hash with the file as argument, i e:
+: (pw/readfile2hash "/tmp/sidewise_export.json")
+ 3. The result is shown in a temporary buffer, that you may
+    save to disk.
