@@ -31,8 +31,8 @@ Save =sidewise2org.el= in one of your =load-path= directories.
 I have only tested this with GNU Emacs version 25.
 
 * Usage
- 1. Click the Sidewise toolbar icon, and perform an export to a file.
- 2. Call pw/readfile2hash with the file as argument, i e:
+ - Click the Sidewise toolbar icon, and perform an export to a file.
+ - Call pw/readfile2hash with the file as argument, i e:
 : (pw/readfile2hash "/tmp/sidewise_export.json")
- 3. The result is shown in a temporary buffer, that you may
-    save to disk.
+ - The result is shown in a temporary buffer, that you may
+   save to disk.
